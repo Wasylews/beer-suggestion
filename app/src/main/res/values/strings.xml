@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BeerSuggestion</string>
+    <string name="btn_suggest">Suggest me a beer</string>
+</resources>
