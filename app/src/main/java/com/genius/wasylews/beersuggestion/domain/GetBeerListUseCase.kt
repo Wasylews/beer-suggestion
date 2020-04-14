@@ -9,7 +9,7 @@ class GetBeerListUseCase @Inject constructor(
     suspend fun getBeers(): List<Beer> {
         return beerRepository.getAll()
             .map {
-                Beer(it.name, it.tagLine, it.logo)
+                Beer(it.name, it.tagLine, it.logo, it.description)
             }
     }
 }

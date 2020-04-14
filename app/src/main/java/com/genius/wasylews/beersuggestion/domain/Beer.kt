@@ -7,5 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class Beer(
     val name: String,
     val tagLine: String,
-    val logo: String
+    val logo: String,
+    val description: String
 ) : Parcelable

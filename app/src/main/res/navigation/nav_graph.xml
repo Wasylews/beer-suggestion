@@ -9,5 +9,16 @@
     <fragment
         android:id="@+id/beerListFragment"
         android:name="com.genius.wasylews.beersuggestion.view.list.BeerListFragment"
-        android:label="BeerListFragment" />
+        android:label="Suggest me a beer" >
+        <action
+            android:id="@+id/showDetails"
+            app:destination="@id/beerDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/beerDetailsFragment"
+        android:name="com.genius.wasylews.beersuggestion.view.details.BeerDetailsFragment" >
+        <argument
+            android:name="item"
+            app:argType="com.genius.wasylews.beersuggestion.domain.Beer" />
+    </fragment>
 </navigation>

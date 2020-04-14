@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.genius.wasylews.beersuggestion.R
 import com.genius.wasylews.beersuggestion.databinding.FragmentBeerListBinding
 import dagger.android.support.DaggerFragment
@@ -29,9 +30,11 @@ class BeerListFragment: DaggerFragment(R.layout.fragment_beer_list) {
         savedInstanceState: Bundle?
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentBeerListBinding.bind(requireView())
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        if (view != null) {
+            binding = FragmentBeerListBinding.bind(view)
+            binding.lifecycleOwner = this
+            binding.viewModel = viewModel
+        }
         return view
     }
 
@@ -46,6 +49,8 @@ class BeerListFragment: DaggerFragment(R.layout.fragment_beer_list) {
 
         adapter.setOnItemClickListener { _, _, position ->
             val beer = adapter.getItem(position)
+            val showDetailsAction = BeerListFragmentDirections.showDetails(beer)
+            findNavController().navigate(showDetailsAction)
         }
 
         viewModel.loadData()
